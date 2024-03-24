@@ -1,0 +1,28 @@
+<html>
+    <head><title>Stroke Result </title></head>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4; 
+        }
+
+        .message-box {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+    </style>
+    <body>
+        <div class="message-box">
+            <h1>Stroke Result</h1>
+            <h1>Great News ! you are not stroke </h1>
+            <a href="{{url_for('listing')}}">Go Back</a>
+        </div>
+    </body>
+</html>

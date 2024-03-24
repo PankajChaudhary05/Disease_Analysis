@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Diabetes Detect System</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 130vh;
+            }
+    
+            .container {
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                width: 80%;
+                max-width: 400px;
+                text-align: center;
+            }
+    
+            .form-group {
+                margin-bottom: 20px;
+            }
+    
+            label {
+                display: block;
+                font-size: 14px;
+                margin-bottom: 5px;
+                text-align: left;
+            }
+    
+            input {
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                margin-top: 5px;
+            }
+    
+            button {
+                background-color: #4caf50;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+    
+            button:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <body>
+    
+    <div class="container">
+        <div></div>
+        <h2><u>Diabetes Prediction</u></h2>
+        <form action="{{url_for('Predict_model')}}" method="POST">
+            <div class="form-group">
+                <label for="Pregnancies">Pregnancies</label>
+                <input type="number" name="Pregnancies" placeholder="Pregnancies" required="required"><br>
+            </div>
+            <div class="form-group">
+                <label for="Glucose">Glucose</label>
+                <input type="text" name="Glucose" placeholder="Glucose"><br>
+            </div>
+            <div class="form-group">
+                <label for="BloodPressure">BloodPressure</label>
+                <input type="text" name="BloodPressure" placeholder="BloodPressure"> <br>
+            </div>
+            <div class="form-group">
+                <label for="SkinThickness">SkinThickness</label>
+                <input type="text" name="SkinThickness" placeholder="SkinThickness"> <br>
+            </div>
+            <div class="form-group">
+                <label for="Insulin">Insulin</label>    
+                <input type="text" name="Insulin" placeholder="Insulin"> <br>
+            </div>
+            <div class="form-group">
+                <label for="BMI">BMI</label>
+                <input type="text" name="BMI" placeholder="BMI"> <br>
+            </div>
+            <div class="form-group">
+                <label for="DiabetesPedigreeFunction">Diabetes Pedigree Function</label>
+                <input type="text" name="DiabetesPedigreeFunction" placeholder="DiabetesPedigreeFunction"> <br>
+            </div>
+            <div class="form-group">
+                <label for="Age">Age</label>
+                <input type="text" name="Age" placeholder="Age"><br>
+            </div>
+            <div class="form-group">
+                <button type="submit">Predict</button>
+        </form>
+    </div>
+    </body>
+    </html> 

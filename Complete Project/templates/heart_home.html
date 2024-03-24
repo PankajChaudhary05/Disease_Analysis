@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title> Heart Disease Detect System </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body style="background: linear-gradient(to bottom, #afd8e9, #417b92, #0a4258);">
+        <div class="card h-50 mx-auto" style="width: 50%;">
+            <div>
+              <div class="card text-center mx-auto" style="background: linear-gradient(to bottom, #f4f4f4, #346297d8);">
+                <!-- Card Header -->
+                <div class="card-header">
+                    <h2 class="card-title"><b>Heart Disease Prediction</b></h2>
+                </div>
+
+                <!-- Card body -->
+                <div class="card-body justify-content-center">
+                  <h4 class="card-title">Medical input</h4>
+                    <!-- Inputs for our ML model -->
+                        <form action="{{ url_for('predict_1')}}" method="post" class="row g-3 align-items-center">
+                                        <div class="col-md-6">
+                                            <label for="inputAge" class="form-label">Age</label>
+                                            <input type="text" class="form-control" name="age" placeholder="0-100" required="required" />
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="inputSex" class="form-label">Sex</label>
+                                            <!-- <input type="text" name="sex" placeholder="Sex" required="required"/> -->
+                                            <select class="form-select" name="sex" required="required">
+                                                <option selected>Choose...</option>
+                                                <option value="0">Female</option>
+                                                <option value="1">Male</option>
+                                              </select>                                          
+                                        </div>
+                                     
+                                    <div class="col-md-6">
+                                        <label for="inputChest" class="form-label">Chest pain type</label>
+                                        <select class="form-select" name="cpt" required="required">
+                                            <option selected>Choose...</option>
+                                            <option value="0">Typical angina(0)</option>
+                                            <option value="1">Atypical angina(1)</option>
+                                            <option value="2">Non-anginal pain(2)</option>
+                                            <option value="3">Asymptomatic(3)</option>
+                                          </select> 
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="inputBp" class="form-label">Blood pressure</label>
+                                        <input type="text" class="form-control" name="bp" placeholder="mm/Hg" required="required" />
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="inputChol" class="form-label">Cholesterol</label>
+                                        <input type="text" class="form-control" name="chol" placeholder="mg/dl" required="required" />
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="inputFbs" class="form-label">Fasting blood sugar</label>
+                                        <select class="form-select" name="fbs" required="required">
+                                            <option selected> > 120 mg/dl</option>
+                                            <option value="0">False</option>
+                                            <option value="1">True</option>
+                                          </select>                                          
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="inputECG" class="form-label">Rest electrocardiogram</label>
+                                        <select class="form-select" name="ecg" required="required">
+                                            <option selected>Choose...</option>
+                                            <option value="0">Normal</option>
+                                            <option value="1">ST elevation</option>
+                                            <option value="2">Hypertrophy</option>
+                                          </select>                                          
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="inputHR" class="form-label">Max heart rate</label>
+                                        <input type="text" class="form-control" name="hr" placeholder="Bps" required="required" />
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="inputExang" class="form-label">Angina</label>
+                                        <select class="form-select" name="exang" required="required">
+                                            <option selected>Choose...</option>
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
+                                          </select>                                          
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="inputSTD" class="form-label">ST depression</label>
+                                        <input type="text" class="form-control" name="oldpeak" placeholder="2.4" required="required" />
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="inputsSlope" class="form-label">Slope</label>
+                                        <select class="form-select" name="slope" required="required">
+                                            <option selected>Choose...</option>
+                                            <option value="0">Upsloping</option>
+                                            <option value="1">Flat</option>
+                                            <option value="2">Downsloping</option>
+                                          </select>                                          
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="inputsVessels" class="form-label">Major vessels by flourosopy</label>
+                                        <select class="form-select" name="majVessel" required="required">
+                                            <option selected>Choose...</option>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                          </select>                                          
+                                    </div>
+                                    
+                                    <div class="col-md-4">
+                                        <label for="inputsThal" class="form-label">Thallium</label>
+                                        <select class="form-select" name="thal" required="required">
+                                            <option selected>Choose...</option>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                          </select>                                          
+                                    </div>
+
+                            <br>
+                            <div class="col-12">
+                                <button class="btn btn-primary" type="submit">Predict </button>
+                            </div>
+                        </form>
+                </div>
+
+                <!-- Card footer -->
+                <div class="card-footer text-muted">
+                    <h5><b>Result>>: {{prediction_result}}</b></h5>
+                  </div>
+                
+              </div>
+            </div>
+        </div>
+    </body>
+
+    <footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    </footer>
+</html>

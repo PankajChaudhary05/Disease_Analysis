@@ -1,3 +1,0 @@
-# MY_TYCS
-# MY_TYCS
-# MY_TYCS

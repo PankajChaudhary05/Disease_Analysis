@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parkinson's Disease Detection</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://img.icons8.com/?size=512&id=pcD8bVCCf7dC&format=png" type="image/png">
+</head>
+<body>
+  
+    <div class="heading">
+        <h1 style="font-size: 45px;"><span style="color: #00aaff;">Parkinson's </span>Disease Detection</h1>
+        <p style="font-size: 25px; padding-top: 40px; font-style: italic;" >Fill the details below and hit the<span style="color: #00aaff;"> detect </span>button.</p>
+    </div>
+    
+
+    <div class="entering" style="padding-left: 80px;">
+        <form method="post" action="/predict_result">
+            <div class="input-group">
+                <label for="feature1">MDVP:Fo(Hz):</label>
+                <input type="text" id="feature1" name="feature1"><br><br>
+                
+                <label for="feature2">MDVP:Fhi(Hz):</label>
+                <input type="text" id="feature2" name="feature2"><br><br>
+        
+                <label for="feature3">MDVP:Flo(Hz):</label>
+                <input type="text" id="feature3" name="feature3"><br><br>
+                
+                <!-- Repeat the following lines for all 22 features -->
+                
+                <label for="feature4">MDVP:Jitter(%):</label>
+                <input type="text" id="feature4" name="feature4"><br><br>
+            </div>
+    
+            <div class="input-group">
+                <label for="feature5">MDVP:Jitter(Abs):</label>
+                <input type="text" id="feature5" name="feature5"><br><br>
+        
+                <label for="feature6">MDVP:RAP:</label>
+                <input type="text" id="feature6" name="feature6"><br><br>
+        
+                <label for="feature7">MDVP:PPQ:</label>
+                <input type="text" id="feature7" name="feature7"><br><br>
+        
+                <label for="feature8">Jitter:DDP:</label>
+                <input type="text" id="feature8" name="feature8"><br><br>
+            </div>
+
+            <div class="input-group">
+                <label for="feature9">MDVP:Shimmer:</label>
+                <input type="text" id="feature9" name="feature9"><br><br>
+        
+                <label for="feature10">MDVP:Shimmer(dB):</label>
+                <input type="text" id="feature10" name="feature10"><br><br>
+        
+                <label for="feature11">Shimmer:APQ3:</label>
+                <input type="text" id="feature11" name="feature11"><br><br>
+        
+                <label for="feature12">Shimmer:APQ5:</label>
+                <input type="text" id="feature12" name="feature12"><br><br>
+
+            </div>
+    
+            
+            <div class="input-group">
+                <label for="feature13">MDVP:APQ:</label>
+                <input type="text" id="feature13" name="feature13"><br><br>
+        
+                <label for="feature14">Shimmer:DDA:</label>
+                <input type="text" id="feature14" name="feature14"><br><br>
+        
+                <label for="feature15">NHR:</label>
+                <input type="text" id="feature15" name="feature15"><br><br>
+        
+                <label for="feature16">HNR:</label>
+                <input type="text" id="feature16" name="feature16"><br><br>
+
+            </div>
+            <div class="input-group">
+                <label for="feature17">RPDE:</label>
+                <input type="text" id="feature17" name="feature17"><br><br>
+        
+                <label for="feature18">DFA:</label>
+                <input type="text" id="feature18" name="feature18"><br><br>
+        
+                <label for="feature19">spread1:</label>
+                <input type="text" id="feature19" name="feature19"><br><br>
+        
+                <label for="feature20">spread2:</label>
+                <input type="text" id="feature20" name="feature20"><br><br>
+            </div>
+    
+            
+    
+            <div class="container">
+                <div class="two">
+                  <label for="feature21">D2:</label>
+                  <input type="text" id="feature21" name="feature21">
+                </div>
+              
+                <div class="two">
+                  <label for="feature22">PPE:</label>
+                  <input type="text" id="feature22" name="feature22">
+                </div>
+                
+              </div>
+              <button style="margin-top: 50px; margin-left: 0px; width: 120px;" type="submit" class="btn">Detect</button>
+            
+            <!-- ... Repeat for other features ... -->
+            
+            
+        </form>
+    </div>
+    <div class="prediction">
+        {% if prediction_text %}
+        <h2>Based on the entered data:</h2>
+        <p style="font-size: 30px;">The person <u><span style="color:#00aaff; font-weight: bold">{{ prediction_text }}</span></u> Parkinsons.</p>
+        {% endif %}
+    </div>
+    
+    
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&family=Bricolage+Grotesque:opsz,wght@10..48,300;10..48,400;10..48,500;10..48,600;10..48,700&family=Noto+Sans:wght@200;300;400;500;600;900&family=Poppins:wght@500;600;700&display=swap');
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background-color: black;
+    color: white;
+}
+
+.heading{
+    padding-top: 50px;
+    padding-left: 80px;
+    padding-bottom: 20px;
+}
+
+
+.navbar{
+    display: flex;
+    background-color: black;
+    margin-top: 20px;
+    overflow: hidden;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    
+    height: 100px;
+    margin: 0;
+    
+    
+}
+
+.links{
+    padding-top: 30px;
+    margin-left: 400px;
+    font-size: 23px;
+    
+}
+
+.btn{
+    height: 50px;
+    width: 150px;
+    margin-left: 30px;
+    color: white;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    background-color: #0088ff;
+    border-radius: 5px;
+    border-width: 0;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn:hover{
+    background-color: rgb(26, 84, 185);
+    cursor: pointer;
+    
+}
+
+.input-group {
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: top;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    display: block;
+    font-size: 16px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.two{
+    margin-right: 24px;
+}
+
+.two label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.two input {
+    display: block;
+    font-size: 16px;
+}
+
+
+.prediction{
+    padding-top: 80px;
+    padding-left: 80px;
+    display: inline-block;
+}
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const cardsSection = document.querySelector('.prediction');
+      if (cardsSection) {
+        // Scroll to the 'cards' section smoothly
+        cardsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+</script>
+</html>

@@ -1,0 +1,33 @@
+<html>
+    <head><title>Diabetes Result </title></head>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4; /* Optional: Set background color */
+        }
+
+        .message-box {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+    </style>
+    <body>
+        <div class="message-box">
+            <h1>Diabetes Result</h1>
+            <p>Prediction: <h3>  {% if result == 1 %}
+                <h1>Becareful! You are Diabetic.</h1>
+            {% else %}
+                <h1>Great News! You are not Diabetic.</h1>
+            {% endif %}</h3></p>
+            <br>
+            <a href="{{url_for('listing')}}">Go Back</a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,187 @@
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Parkisons Detect System</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 398vh;
+            }
+    
+            .container {
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                width: 80%;
+                max-width: 400px;
+                text-align: center;
+            }
+    
+            .form-group {
+                margin-bottom: 20px;
+            }
+    
+            label {
+                display: block;
+                font-size: 14px;
+                margin-bottom: 5px;
+                text-align: left;
+            }
+    
+            input {
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                margin-top: 5px;
+            }
+    
+            button {
+                background-color: #4caf50;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+    
+            button:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <body>
+    
+    <div class="container">
+        <div></div>
+        <h2><u>Parkinson Detect System</u></h2>
+        <form action="{{ url_for('predict_result') }}" method="POST">
+            <div class="form-group">
+                <label for="feature1">MDVP:Fo(Hz):</label>
+                <input type="text" id="feature1" name="feature1"><br><br>
+
+            </div>
+            <div class="form-group">
+                <label for="feature2">MDVP:Fhi(Hz):</label>
+                <input type="text" id="feature2" name="feature2"><br><br>
+			</div>
+            <div class="form-group">
+                <label for="feature3">MDVP:Flo(Hz):</label>
+                <input type="text" id="feature3" name="feature3"><br><br>
+			</div>
+            <div class="form-group">
+                <label for="feature4">MDVP:Jitter(%):</label>
+                <input type="text" id="feature4" name="feature4"><br><br>
+
+			</div>
+            <div class="form-group">
+                <label for="feature5">MDVP:Jitter(Abs):</label>
+                <input type="text" id="feature5" name="feature5"><br><br>
+
+			</div>
+            <div class="form-group">
+                <label for="feature6">MDVP:RAP:</label>
+                <input type="text" id="feature6" name="feature6"><br><br>
+			</div>
+            <div class="form-group">
+                <label for="feature7">MDVP:PPQ:</label>
+                <input type="text" id="feature7" name="feature7"><br><br>
+
+			</div>
+            <div class="form-group">
+                <label for="feature8">Jitter:DDP:</label>
+                <input type="text" id="feature8" name="feature8"><br><br>
+
+			</div>
+            <div class="form-group">
+                <label for="feature9">MDVP:Shimmer:</label>
+                <input type="text" id="feature9" name="feature9"><br><br>
+
+			</div>
+            <div class="form-group">
+                <label for="feature10">MDVP:Shimmer(dB):</label>
+                <input type="text" id="feature10" name="feature10"><br><br>
+
+			</div>
+            <div class="form-group">
+                <label for="feature11">Shimmer:APQ3:</label>
+                <input type="text" id="feature11" name="feature11"><br><br>
+                <label for="feature12">Shimmer:APQ5:</label>
+                <input type="text" id="feature12" name="feature12"><br><br>
+        
+			</div>
+           
+            <div class="form-group">
+                <label for="feature13">MDVP:APQ:</label>
+                <input type="text" id="feature13" name="feature13"><br><br>
+        
+			</div>
+            <div class="form-group">
+                <label for="feature14">Shimmer:DDA:</label>
+                <input type="text" id="feature14" name="feature14"><br><br>
+        
+			</div>
+            <div class="form-group">
+                <label for="feature15">NHR:</label>
+                <input type="text" id="feature15" name="feature15"><br><br>
+			</div>
+            <div class="form-group">
+                <label for="feature16">HNR:</label>
+                <input type="text" id="feature16" name="feature16"><br><br>
+			</div>
+            <div class="form-group">
+                <label for="feature17">RPDE:</label>
+                <input type="text" id="feature17" name="feature17"><br><br>
+			</div>
+            <div class="form-group">
+                <label for="feature18">DFA:</label>
+                <input type="text" id="feature18" name="feature18"><br><br>
+			</div>
+            <div class="form-group">
+                <label for="feature19">spread1:</label>
+                <input type="text" id="feature19" name="feature19"><br><br>
+			</div>
+            <div class="form-group">
+                <label for="feature20">spread2:</label>
+                <input type="text" id="feature20" name="feature20"><br><br>
+			</div>
+            <div class="form-group">
+                <label for="feature21">D2:</label>
+                <input type="text" id="feature21" name="feature21">
+			</div>
+            <div class="form-group">
+                <label for="feature22">PPE:</label>
+                <input type="text" id="feature22" name="feature22">
+			</div>
+            
+           
+
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark" value="submit">Submit</button>
+                
+
+        </form>
+		
+    </div>
+    <div class="prediction">
+        {% if prediction_text %}
+        <h2>Based on the entered data:</h2>
+        <p style="font-size: 30px;">The person <u><span style="color:#00aaff; font-weight: bold">{{ prediction_text }}</span></u> Parkinsons.</p>
+        {% endif %}
+        <a href="{{url_for('listing')}}">Go Back</a>
+    </div>
+    </body>
+    </html> 
+

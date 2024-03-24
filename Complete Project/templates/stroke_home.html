@@ -1,0 +1,129 @@
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stroke Detect System</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 170vh;
+            }
+    
+            .container {
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                width: 80%;
+                max-width: 400px;
+                text-align: center;
+            }
+    
+            .form-group {
+                margin-bottom: 20px;
+            }
+    
+            label {
+                display: block;
+                font-size: 14px;
+                margin-bottom: 5px;
+                text-align: left;
+            }
+    
+            input {
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                margin-top: 5px;
+            }
+    
+            button {
+                background-color: #4caf50;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+    
+            button:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <body>
+    
+    <div class="container">
+        <div></div>
+        <h2><u>Stroke Detect System</u></h2>
+        <form action="{{ url_for('result') }}" method="POST">
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <input type="text" class="form-control" id="gender" name="gender" placeholder="0 (FEMALE), 1 (MALE)"> <br> <br>
+
+
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" class="form-control" id="age" name="age" placeholder="ENTER YOUR AGE"> <br> <br>
+
+			</div>
+            <div class="form-group">
+                <label for="hypertension">Hypertension</label>
+                <input type="text" class="form-control" id="hypertension" name="hypertension" placeholder="0 (NO), 1 (YES)"> <br> <br>
+
+
+
+			</div>
+            <div class="form-group">
+                <label for="heart_disease">Heart disease</label>
+                <input type="text" class="form-control" id="heart_disease" name="heart_disease" placeholder="0 (NO), 1 (YES) "> <br> <br>
+
+
+			</div>
+            <div class="form-group">
+                <label for="work_type">Work type</label>
+                <input type="text" class="form-control" id="work_type" name="work_type" placeholder="0 (GOVT. JOB), 1 (NEVER WORKED), 2 (PRIVATE), 3 (SELF EMPLOYED), 4 (CHILDREN)"> <br> <br>
+
+			</div>
+            <div class="form-group">
+                <label for="Residence_type">Residence type</label>
+                <input type="text" class="form-control" id="Residence_type" name="Residence_type" placeholder="0 (RURAL), 1 (URBAN)"> <br> <br>
+
+			</div>
+            <div class="form-group">
+                <label for="avg_glucose_level">Avg glucose level </label>
+                <input type="text" class="form-control" id="avg_glucose_level" name="avg_glucose_level" placeholder="ENTER VALUE"> <br> <br>
+
+
+			</div>
+            <div class="form-group">
+                <label for="bmi">BMI</label>
+                <input type="text" class="form-control" id="bmi" name="bmi" placeholder="ENTER VALUE"> <br> <br>
+
+			</div>
+            <div class="form-group">
+                <label for="smoking_status">Smoking</label>
+                <input type="text" class="form-control" id="smoking_status" name="smoking_status" placeholder="0 (UNKNOWN), 1 (SOMETIMES), 2 (NEVER), 3 (REGULAR)"> <br> <br>
+
+			</div>
+
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark" value="submit">Submit</button>
+
+        </form>
+		
+    </div>
+    </body>
+    </html> 
